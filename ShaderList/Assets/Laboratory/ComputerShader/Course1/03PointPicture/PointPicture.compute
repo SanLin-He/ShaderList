@@ -1,0 +1,17 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel Main
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+                     
+
+RWStructuredBuffer<float3> P;//float3 可以是上面的PP，那么P[id].position这么调用了，不过我这儿用不着。
+
+[numthreads(4,4,1)]
+void Main (uint3 id : SV_DispatchThreadID)
+{
+	//32为组的x方向组数量，4为每组x方向的线程数
+    uint index = id.x + id.y * 32 * 4 ;//0~16384,（x+y*group的x深度*group内的x的深度+z*group的x深度*group的y的深度 *groupn内x深度*group内的y的深度）
+
+    P[index] = float3(id.x,id.y,id.z)/1.7 + float3(0,0,0);//缩放了粒子间的间距
+
+}

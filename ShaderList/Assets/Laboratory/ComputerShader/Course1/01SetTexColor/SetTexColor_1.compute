@@ -1,0 +1,22 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float4> Result;//cs可以读取两种类型的资源：buffer ,texture
+
+[numthreads(8,8,1)]
+//在核的前缀用三个纬度，定义了一个线程组内线程的数量，如果只用2个纬度那么，最后一个参数为1即可
+//[numthreads(thread_group_size_x,thread_group_size_y,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	// TODO: insert actual code here!
+	//Result[id.xy] = float4(id.x & id.y, (id.x & 15)/15.0, (id.y & 15)/15.0, 0.0);
+
+	//给buffer赋值
+    //纯红色
+    //Result[id.xy] = float4(1,0,0,1);
+    //基于uv的x给颜色
+    float v = id.x/256.0f;
+    Result[id.xy] = float4(v,0,0,1);
+}

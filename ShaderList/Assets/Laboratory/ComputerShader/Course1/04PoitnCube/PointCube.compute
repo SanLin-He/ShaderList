@@ -1,0 +1,16 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel Main
+float x;
+float y;
+float z;
+
+RWStructuredBuffer<float3> Result;//float3 可以是上面的PP，那么P[id].position这么调用了，不过我这儿用不着。
+
+[numthreads(8,8,8)]//线程组内的线程
+void Main (uint3 id : SV_DispatchThreadID)
+{
+    uint index = id.x + id.y * 8 * 8 + id.z* 8 * 8 * 8 * 8;//遍历元素（x+y*group的x深度*group内的x的深度+z*group的x深度*group的y的深度 *groupn内x深度*group内的y的深度）
+
+    Result[index] = float3(id) + float3(x,y,z);//缩放了粒子间的间距
+
+}

@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Laboratory/ComputerShader/MarchingCubes/Example.unity
+  isLoaded: 1
+  isActive: 1
