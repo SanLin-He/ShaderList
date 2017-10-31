@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Laboratory/DepthAbout/4ForceField/ForceFieldScene.unity
+- path: Assets/Laboratory/CommandBuffer/Offical/DeferredCustomLights/_DeferredCustomLights.unity
   isLoaded: 1
   isActive: 1
