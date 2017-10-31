@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 
 Shader "ShaderPrac/Car Paint Shader"
 {
@@ -91,7 +93,7 @@ Shader "ShaderPrac/Car Paint Shader"
 				output.diffuseUVAndMatCapCoords.zw = output.diffuseUVAndMatCapCoords.zw * 0.5 + 0.5;
 
 				//坐标变换
-				output.position = mul(UNITY_MATRIX_MVP, input.position);
+				output.position = UnityObjectToClipPos(input.position);
 
 				//细节纹理准备准备UV,存储于TEXCOORD0的前两个坐标xy
 				output.detailUVCoordsAndDepth.xy = TRANSFORM_TEX(input.UVCoordsChannel1, _DetailTex);

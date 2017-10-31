@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
 Shader "浅墨Shader编程/Volume5/可编程Shader示例" 
@@ -66,7 +68,7 @@ Shader "浅墨Shader编程/Volume5/可编程Shader示例"
 				
 				//计算结果
 				o.col = float4(lightFinal * _Color.rgb, 1.0);//颜色
-				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);//位置
+				o.pos = UnityObjectToClipPos(v.vertex);//位置
 				return o;
 			}
 			

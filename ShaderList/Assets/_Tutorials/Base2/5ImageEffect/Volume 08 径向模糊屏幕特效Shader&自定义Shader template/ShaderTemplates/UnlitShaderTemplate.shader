@@ -1,4 +1,6 @@
-﻿
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+
 Shader "浅墨Shader编程/Volume8/无灯光着色器(Unlit Shader)模板"
 {
 	//------------------------------------【属性值】------------------------------------
@@ -62,7 +64,7 @@ Shader "浅墨Shader编程/Volume8/无灯光着色器(Unlit Shader)模板"
 				v2f o;
 				//【2】填充此输出结构
 				//输出的顶点位置（像素位置）为模型视图投影矩阵乘以顶点位置，也就是将三维空间中的坐标投影到了二维窗口
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				//【3】用UnityCG.cginc头文件中内置定义的宏,根据uv坐标来计算真正的纹理上对应的位置（按比例进行二维变换）
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				//【4】用UnityCG.cginc头文件中内置定义的宏处理雾效，从顶点着色器中输出雾效数据

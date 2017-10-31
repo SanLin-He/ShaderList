@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
 //支持纹理载入的specular shader 
@@ -72,7 +74,7 @@ Shader "浅墨Shader编程/Volume13/5.Specular with Shader"
 
 				//【2】填充此输出结构
 				//输出的顶点位置为模型视图投影矩阵乘以顶点位置，也就是将三维空间中的坐标投影到了二维窗口
-				OUT.pos = mul(UNITY_MATRIX_MVP, IN.vertex);
+				OUT.pos = UnityObjectToClipPos(IN.vertex);
 				//获得顶点在世界空间中的位置坐标
 				OUT.posWorld = mul(unity_ObjectToWorld, IN.vertex);
 				//获取顶点在世界空间中的法线向量坐标

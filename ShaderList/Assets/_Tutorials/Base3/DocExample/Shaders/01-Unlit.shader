@@ -1,4 +1,6 @@
-﻿Shader "Base3/SimplestUnlitShader"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Base3/SimplestUnlitShader"
 {
     Properties
     {
@@ -36,7 +38,7 @@
                 v2f o;
                 // transform position to clip space
                 // (multiply with model*view*projection matrix)
-                o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+                o.vertex = UnityObjectToClipPos(v.vertex);
                 // just pass the texture coordinate
                 o.uv = v.uv;
                 return o;

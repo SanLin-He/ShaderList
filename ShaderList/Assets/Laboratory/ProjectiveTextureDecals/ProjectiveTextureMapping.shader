@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 Shader "Custom/Projective-Texture-Mapping" {
     Properties {
@@ -27,7 +29,7 @@ Shader "Custom/Projective-Texture-Mapping" {
 
             v2f vert(appdata_base v) {
                 v2f o;
-                o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+                o.pos = UnityObjectToClipPos(v.vertex);
                 float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
 				
                 o.shadowUV = mul(_texProjMat, worldPos);

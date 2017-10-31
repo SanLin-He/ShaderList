@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "_Shaders/BasicTemplate"
 {
 	Properties
@@ -49,7 +51,7 @@ struct fragmentInput
 fragmentInput vert( vertexInput i )
 {
 	fragmentInput o;
-	o.pos = mul( UNITY_MATRIX_MVP, i.vertex );
+	o.pos = UnityObjectToClipPos( i.vertex );
 	o.color = _Color;
     
 	return o;

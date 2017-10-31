@@ -1,4 +1,6 @@
-﻿Shader "Lab/Flag with lighting"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Lab/Flag with lighting"
 {
     Properties
     {
@@ -54,7 +56,7 @@
             v2f vert(appdata_base v) {
                 v2f o;
                 o.vertex = v.vertex;
-                o.pos = mul(UNITY_MATRIX_MVP, movement(v.vertex, v.texcoord));
+                o.pos = UnityObjectToClipPos(movement(v.vertex, v.texcoord));
                 o.uv = v.texcoord;
                 return o;
             }

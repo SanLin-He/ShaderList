@@ -1,4 +1,6 @@
-﻿
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+
 Shader "浅墨Shader编程/Volume8/图像特效Shader模板"
 {
 	//------------------------------------【属性值】------------------------------------
@@ -57,7 +59,7 @@ Shader "浅墨Shader编程/Volume8/图像特效Shader模板"
 
 				//【2】填充此输出结构
 				//输出的顶点位置（像素位置）为模型视图投影矩阵乘以顶点位置，也就是将三维空间中的坐标投影到了二维窗口
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				//输入的UV纹理坐标为顶点输出的坐标
 				o.uv = v.uv;
 

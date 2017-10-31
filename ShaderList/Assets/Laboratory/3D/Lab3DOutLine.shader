@@ -1,4 +1,6 @@
-﻿//还看不懂…（先放大点渲染一个，再渲染原来的）
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+//还看不懂…（先放大点渲染一个，再渲染原来的）
 Shader "Lab/3D/Outline" {
     Properties {
         _MainTex ("MainTex", 2D) = "white" {}
@@ -25,7 +27,7 @@ Shader "Lab/3D/Outline" {
  
             float4 vert(appdata_base v) : SV_POSITION {
                 v2f o;
-                o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+                o.pos = UnityObjectToClipPos(v.vertex);
                 float3 normal = mul((float3x3) UNITY_MATRIX_MV, v.normal);
                 normal.x *= UNITY_MATRIX_P[0][0];
                 normal.y *= UNITY_MATRIX_P[1][1];

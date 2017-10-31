@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
 
@@ -111,7 +113,7 @@ Shader "Learning Unity Shader/Lecture 14/Basic Rim Shader"
 					//获得顶点在世界空间中的位置坐标  
 					o.posWorld = mul(unity_ObjectToWorld, v.vertex);
 					//获取像素位置
-					o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+					o.pos = UnityObjectToClipPos(v.vertex);
 
 					//【3】返回此输出结构对象  || Returns the output structure
 					return o;

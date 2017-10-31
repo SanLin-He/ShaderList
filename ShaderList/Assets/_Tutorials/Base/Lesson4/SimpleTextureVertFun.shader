@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "_Shaders/Simple Texture Vert Fun"
 {
 	Properties
@@ -48,7 +50,7 @@ fragmentInput vert( vertexInput i )
 	// vert distortion
 	i.vertex.x += _SinTime.w * i.vertex.y;
 
-	o.pos = mul( UNITY_MATRIX_MVP, i.vertex );
+	o.pos = UnityObjectToClipPos( i.vertex );
 	o.uv = TRANSFORM_TEX( i.texcoord, _MainTex );
 
 	return o;

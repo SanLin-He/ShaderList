@@ -1,4 +1,6 @@
-﻿//双面双色颜色可以调版透明Shader
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+//双面双色颜色可以调版透明Shader
 
 Shader "浅墨Shader编程/Volume13/3.TwoSideColorChangeAlpha" 
 {
@@ -47,7 +49,7 @@ Shader "浅墨Shader编程/Volume13/3.TwoSideColorChangeAlpha"
 			{
 				//坐标系变换
 				//输出的顶点位置（像素位置）为模型视图投影矩阵乘以顶点位置，也就是将三维空间中的坐标投影到了二维窗口
-				return mul(UNITY_MATRIX_MVP, vertexPos);
+				return UnityObjectToClipPos(vertexPos);
 			}
 
 			//--------------------------------【片段着色函数】-----------------------------
@@ -95,7 +97,7 @@ Shader "浅墨Shader编程/Volume13/3.TwoSideColorChangeAlpha"
 			{
 				//坐标系变换
 				//输出的顶点位置（像素位置）为模型视图投影矩阵乘以顶点位置，也就是将三维空间中的坐标投影到了二维窗口
-				return mul(UNITY_MATRIX_MVP, vertexPos);
+				return UnityObjectToClipPos(vertexPos);
 			}
 
 			//--------------------------------【片段着色函数】-----------------------------

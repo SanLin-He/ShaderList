@@ -1,4 +1,6 @@
-﻿Shader "Lab/3D/DistortingGrabPass" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Lab/3D/DistortingGrabPass" {
     Properties {
         _Intensity ("Intensity", Range(0, 50)) = 0
     }
@@ -23,7 +25,7 @@
  
             v2f vert(appdata_base v) {
                 v2f o;
-                o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+                o.pos = UnityObjectToClipPos(v.vertex);
 				// use ComputeGrabScreenPos function from UnityCG.cginc
                 // to get the correct texture coordinate
                 o.grabPos = ComputeGrabScreenPos(o.pos);

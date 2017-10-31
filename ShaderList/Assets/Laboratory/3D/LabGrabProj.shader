@@ -1,4 +1,6 @@
-﻿//将投影区域内的，变灰
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+//将投影区域内的，变灰
 Shader "Custom/3D/Grab pass" {
     Properties {
         _ZoomVal ("Zoom value", Range(0, 20)) = 0
@@ -24,7 +26,7 @@ Shader "Custom/3D/Grab pass" {
  
             v2f vert(appdata_base v) {
                 v2f o;
-                o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+                o.pos = UnityObjectToClipPos(v.vertex);
                 o.grabPos = ComputeGrabScreenPos(o.pos + half4(0, 0, 0, _ZoomVal));
                 return o;
             }

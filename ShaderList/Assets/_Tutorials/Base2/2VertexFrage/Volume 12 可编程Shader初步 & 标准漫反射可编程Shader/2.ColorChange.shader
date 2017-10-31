@@ -1,4 +1,6 @@
-﻿//单色可调顶点&片段着色器
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+//单色可调顶点&片段着色器
 
 Shader "浅墨Shader编程/Volume12/2.ColorChange"
 {
@@ -30,7 +32,7 @@ Shader "浅墨Shader编程/Volume12/2.ColorChange"
 			{
 				//坐标系变换
 				//输出的顶点位置（像素位置）为模型视图投影矩阵乘以顶点位置，也就是将三维空间中的坐标投影到了二维窗口
-				return mul(UNITY_MATRIX_MVP, vertexPos);
+				return UnityObjectToClipPos(vertexPos);
 			}
 			uniform float4 _Color;
 

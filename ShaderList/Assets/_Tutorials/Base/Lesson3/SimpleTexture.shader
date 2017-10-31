@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "_Shaders/Simple Texture"
 {
 	Properties
@@ -44,7 +46,7 @@ struct fragmentInput
 fragmentInput vert( vertexInput i )
 {
 	fragmentInput o;
-	o.pos = mul( UNITY_MATRIX_MVP, i.vertex );
+	o.pos = UnityObjectToClipPos( i.vertex );
 	o.uv = TRANSFORM_TEX( i.texcoord, _MainTex );
 
 	return o;

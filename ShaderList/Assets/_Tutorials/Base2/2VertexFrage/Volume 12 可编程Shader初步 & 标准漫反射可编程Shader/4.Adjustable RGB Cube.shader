@@ -1,4 +1,6 @@
-﻿//RGB立方体单项可调
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+//RGB立方体单项可调
 
 Shader "浅墨Shader编程/Volume12/4.RGB cube v2"
 {
@@ -42,7 +44,7 @@ Shader "浅墨Shader编程/Volume12/4.RGB cube v2"
 				vertexOutput output;
 
 				//坐标系变换:将三维空间中的坐标投影到二维窗口
-				output.positon = mul(UNITY_MATRIX_MVP, vertexPos);
+				output.positon = UnityObjectToClipPos(vertexPos);
 				//输出颜色为顶点位置加上一个颜色偏移量
 				output.color = vertexPos + float4(_ColorValue, _ColorValue, _ColorValue, 0.0);
 

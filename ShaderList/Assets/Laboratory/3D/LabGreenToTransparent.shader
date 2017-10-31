@@ -1,4 +1,6 @@
-﻿//让绿色成为透明
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+//让绿色成为透明
 Shader "Lab/3D/GreenToTransparent"
 {
     Properties {
@@ -26,7 +28,7 @@ Shader "Lab/3D/GreenToTransparent"
  
             v2f vert(appdata_base v) {
                 v2f o;
-                o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+                o.pos = UnityObjectToClipPos(v.vertex);
                 o.uv1 = TRANSFORM_TEX(v.texcoord, _MainTex);
                 return o;
             }

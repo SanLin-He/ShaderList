@@ -1,4 +1,6 @@
-﻿Shader "Hidden/QuickBlur"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Hidden/QuickBlur"
 {
 	Properties
 	{
@@ -38,7 +40,7 @@
 			v2f vert (appdata v)
 			{
 				v2f o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = v.uv;
 				o.halfTexel = _MainTex_TexelSize.xy * 0.5 * _Size;
 				return o;

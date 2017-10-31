@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "_Shaders/Dual Texture Wipe"
 {
 	Properties
@@ -50,7 +52,7 @@ fragmentInput vert( vertexInput i )
 {
 	fragmentInput o;
 	o.localPos = i.vertex.xy + fixed2( 0.5, 0.5 );
-	o.pos = mul( UNITY_MATRIX_MVP, i.vertex );
+	o.pos = UnityObjectToClipPos( i.vertex );
 	o.uv = TRANSFORM_TEX( i.texcoord, _MainTex );
 	o.uv2 = TRANSFORM_TEX( i.texcoord, _SecondTex );
 

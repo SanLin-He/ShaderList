@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
 
 Shader "浅墨Shader编程/Volume12/Diffuse(Lambert) Shader"
@@ -63,7 +65,7 @@ Shader "浅墨Shader编程/Volume12/Diffuse(Lambert) Shader"
 
 					//【2】填充此输出结构
 					//输出的顶点位置为模型视图投影矩阵乘以顶点位置，也就是将三维空间中的坐标投影到了二维窗口
-					output.position = mul(UNITY_MATRIX_MVP, input.vertex);
+					output.position = UnityObjectToClipPos(input.vertex);
 					//获取顶点在世界空间中的法线向量坐标
 					output.normal = mul(float4(input.normal, 0.0), unity_WorldToObject).xyz;
 

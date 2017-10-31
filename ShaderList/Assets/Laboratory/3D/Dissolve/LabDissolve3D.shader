@@ -44,7 +44,7 @@
  
             #include "UnityCG.cginc"
             // Change path if needed shader所在的相对路径
-            #include "../ClassicNoise3D.cginc"
+            #include "../../ClassicNoise3D.cginc"
  
             struct v2f {
                 float4 pos : SV_POSITION;
